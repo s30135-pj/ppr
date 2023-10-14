@@ -24,22 +24,18 @@ int main()
 	cin >> y;
 	int raz = (x > y) ? y : x;
 	int dwa = (x > y) ? x : y;
-	int* tab = new int[dwa] {0};
-	int i = (raz == 1) ? 2 : raz;
-	while (i <= dwa) {
-		tab[i] = suma_dzielnikow(i);
-		i++;
-	}
 	cout << "Liczby zaprzyjaznione z zakresu " << x << " do " << y << " to: " << endl;
-	while (dwa >= raz) {
-		int suma = suma_dzielnikow(dwa);
-		if (dwa != suma) {
-			if (dwa == tab[suma]) {
-				cout << dwa << ' ' << tab[dwa] << endl;
-				tab[dwa] = 0; //aby sie drugi raz to samo nie wyswietlalo
-			}
+	while (raz <= dwa) {
+		int suma = suma_dzielnikow(raz);
+		if (raz == suma)
+		{
+			raz++;
+			continue;
 		}
-		dwa--;
+		if (suma_dzielnikow(suma) == raz && raz > suma) {
+			cout << "Para: " << raz << " " << suma << "\n";
+		}
+		raz++;
 	}
 }
 
