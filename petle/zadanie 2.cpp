@@ -16,12 +16,19 @@ int suma_dzielnikow(int l) {
 
 int main()
 {
-	int x;
-	int y;
-	cout << "Pod poczatek zakresu: ";
-	cin >> x;
-	cout << "Podaj koniec zakresu: ";
-	cin >> y;
+	int x{0}, y{0};
+	while (x <= 0 || y <= 0) {
+		cout << "Podaj poczatek zakresu: ";
+		cin >> x;
+		cout << "Podaj koniec zakresu: ";
+		cin >> y;
+		if (x <= 0) cout << "Mozna podawac liczby tylko wieksze od 0" << endl;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(100, '\n');
+			cout << "Mozesz wpisac tylko liczbe" << endl;
+		}
+	}
     int poczatek = (x > y) ? y : x;
 	int koniec = (x > y) ? x : y;
 	cout << "Liczby zaprzyjaznione z zakresu " << poczatek << " do " << koniec << " to: " << endl;
