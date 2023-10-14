@@ -22,20 +22,20 @@ int main()
 	cin >> x;
 	cout << "Podaj koniec zakresu: ";
 	cin >> y;
-	int raz = (x > y) ? y : x;
-	int dwa = (x > y) ? x : y;
-	cout << "Liczby zaprzyjaznione z zakresu " << x << " do " << y << " to: " << endl;
-	while (raz <= dwa) {
-		int suma = suma_dzielnikow(raz);
-		if (raz == suma)
+    int poczatek = (x > y) ? y : x;
+	int koniec = (x > y) ? x : y;
+	cout << "Liczby zaprzyjaznione z zakresu " << poczatek << " do " << koniec << " to: " << endl;
+	while (poczatek <= koniec) {
+		int suma = suma_dzielnikow(poczatek);
+		if (poczatek == suma)
 		{
-			raz++;
+			poczatek++;
 			continue;
 		}
-		if (suma_dzielnikow(suma) == raz && raz > suma) {
-			cout << "Para: " << raz << " " << suma << "\n";
+		if (suma_dzielnikow(suma) == poczatek && poczatek > suma) {
+			cout << "Para: " << poczatek << " " << suma << "\n";
 		}
-		raz++;
+		poczatek++;
 	}
 }
 

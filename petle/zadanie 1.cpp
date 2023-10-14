@@ -16,8 +16,10 @@ int main()
     cin >> x;
     cout << "Podaj koniec zakresu ";
     cin >> y;
-    cout << "Liczby pierwsze od " << x << " do " << y << endl;
-    for (int i = x; i <= y; i++) {
+    int poczatek = (x > y) ? y : x;
+	int koniec = (x > y) ? x : y;
+    cout << "Liczby pierwsze od " << poczatek << " do " << koniec << endl;
+    for (int i = poczatek; i <= koniec; i++) {
         if (isPrime(i)) cout << i << ' ';
     }
 }
