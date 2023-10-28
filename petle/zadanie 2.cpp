@@ -16,12 +16,19 @@ int suma_dzielnikow(int l) {
 
 int main()
 {
-	int x;
-	int y;
-	cout << "Pod poczatek zakresu: ";
-	cin >> x;
-	cout << "Podaj koniec zakresu: ";
-	cin >> y;
+	int x{0}, y{0};
+	while (x <= 0 || y <= 0) {
+		cout << "Podaj poczatek zakresu: ";
+		cin >> x;
+		cout << "Podaj koniec zakresu: ";
+		cin >> y;
+		if (x <= 0) cout << "Mozna podawac liczby tylko wieksze od 0" << endl;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(100, '\n');
+			cout << "Mozesz wpisac tylko liczbe" << endl;
+		}
+	}
     int poczatek = (x > y) ? y : x;
 	int koniec = (x > y) ? x : y;
 	cout << "Liczby zaprzyjaznione z zakresu " << poczatek << " do " << koniec << " to: " << endl;
@@ -33,19 +40,8 @@ int main()
 			continue;
 		}
 		if (suma_dzielnikow(suma) == poczatek && poczatek > suma) {
-			cout << "Para: " << poczatek << " " << suma << "\n";
+			cout << "Para: " << poczatek << " " << suma << endl;
 		}
 		poczatek++;
 	}
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

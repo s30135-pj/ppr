@@ -1,36 +1,32 @@
-// petle.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 
 #include <iostream>
 using namespace std;
 bool isPrime(int l) {
-    for (int i = 2; i * i < l; i++) {
-        if (l % i == 0) return false;
-    }
-    return true;
+	for (int i = 2; i * i <= l; i++) {
+		if (l % i == 0) return false;
+	}
+	return true;
 }
 int main()
 {
-    int x, y;
-    cout << "Podaj poczatek zakresu ";
-    cin >> x;
-    cout << "Podaj koniec zakresu ";
-    cin >> y;
-    int poczatek = (x > y) ? y : x;
+	int x{0}, y{0};
+	while (x <= 0 || y <= 0) {
+		cout << "Podaj poczatek zakresu: ";
+		cin >> x;
+		cout << "Podaj koniec zakresu: ";
+		cin >> y;
+		if (x <= 0) cout << "Mozna podawac liczby tylko wieksze od 0" << endl;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(100, '\n');
+			cout << "Mozesz wpisac tylko liczbe" << endl;
+		}
+	}
+	int poczatek = (x > y) ? y : x;
 	int koniec = (x > y) ? x : y;
-    cout << "Liczby pierwsze od " << poczatek << " do " << koniec << endl;
-    for (int i = poczatek; i <= koniec; i++) {
-        if (isPrime(i)) cout << i << ' ';
-    }
+	cout << "Liczby pierwsze od " << poczatek << " do " << koniec << endl;
+	for (int i = poczatek; i <= koniec; i++) {
+		if (isPrime(i)) cout << i << ' ';
+	}
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
