@@ -27,6 +27,8 @@ int main()
 			cout << ((gracz == komp) ? "Remis" : (gracz == 1 && komp == 2) ? "Wygrales" : (gracz == 2 && komp == 3) ? "Wygrales" : (gracz == 3 && komp == 1) ? "Wygrales" : "Przegrales");
 			cout << endl;
 			break;
+		case 9:
+			break;
 		default:
 			cout << "Zly numer" << endl;
 			break;
