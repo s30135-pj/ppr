@@ -24,16 +24,17 @@ int euklides_p(int a, int b) {
 #include<iostream>
 using namespace std;
 
-int dwumian_r(int n, int r) {
-	if (n < r) return 0;
-	if (r == 0 || r == n)
+int dwumian_r(int n, int k) {
+	if (n < k) return 0;
+	if (k == 0 || k == n)
 		return 1;
-	return dwumian_r(n - 1, r) + dwumian_r(n - 1, r - 1);
+	return dwumian_r(n - 1, k) + dwumian_r(n - 1, k - 1);
 }
-int dwumian_p(int n, int r) {
+int dwumian_p(int n, int k) {
 	int value = 1;
-	for (int i = 0; i < r; i++)
+	for (int i = 0; i < k; i++) {
 		value = (value * (n - i)) / (i + 1);
+	}
 	return value;
 }
 void licz_czas(int funkcja(int a, int b), int a, int b) {
