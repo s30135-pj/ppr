@@ -32,7 +32,7 @@ int main()
 	cout << "Wybierz rodzaj figury: kwardat(1), prostokat(2), trojkat(3), kolo(4): ";
 	cin >> r;
 	double pi = M_PI;
-	int a, b, c;
+	double a, b, c;
 	switch (r) {
 	case 1:
 		cout << "Podaj dlugosc boku kwadratu: ";
