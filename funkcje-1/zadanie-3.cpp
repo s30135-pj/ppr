@@ -2,53 +2,60 @@
 #include <iostream>
 #include<cmath>
 #include<string>
-#include<sstream>
-#include<vector>
+
 using namespace std;
 
 
-void pole(int a) {
+void pole(double a) {
 	cout << "Pole kwadratu to " << a * a << endl;
 }
-void pole(int a, int b) {
+void pole(double a, double b) {
 	cout << "Pole prostokata to " << a * b << endl;
 }
 
-void pole(int a, int b, int c) {
-	double p = (a + b + c) / 2;
-	double w = sqrt(p * ((p - a) * (p - b) * (p - c)));
-	cout << "Pole trojkata to " << w << endl;
+void pole(double a, double b, double c) {
+	if (a + b > c && c + b > a && a + c > b) {
+		double p = (a + b + c) / 2;
+		double w = sqrt(p * ((p - a) * (p - b) * (p - c)));
+		cout << "Pole trojkata to " << w << endl;
+	}
+	else {
+		cout << "To nie jest trojkat";
+	}
 }
-void pole(int r, double pi) {
-	cout << "Pole kola to " << pi * r * r << endl;
+void pole(double r, double *pi) {
+	cout << "Pole kola to " << *pi * r * r << endl;
 }
 int main()
 {
-	cout << "Wpisz dlugosci bokow, lub promien kola po spacjach: ";
-	string s;
-	getline(cin, s);
-	istringstream iss(s);
-	vector<int> dane;
-	int licz;
-	while (iss >> licz) {
-		dane.push_back(licz);
-	}
-	if (dane.size() == 1) {
-		cout << "Czy to kolo? t / n " << endl;
-		string odp;
-		cin >> odp;
-		if (odp == "t") {
-			pole(dane[0], M_PI);
-		}
-		else if (odp == "n") {
-			pole(dane[0]);
-		}
-	}
-	else if (dane.size() == 2) {
-		pole(dane[0], dane[1]);
-	}
-	else if (dane.size() == 3) {
-		pole(dane[0], dane[1], dane[2]);
+	int r = 0;
+	cout << "Wybierz rodzaj figury: kwardat(1), prostokat(2), trojkat(3), kolo(4): ";
+	cin >> r;
+	double pi = M_PI;
+	double a, b, c;
+	switch (r) {
+	case 1:
+		cout << "Podaj dlugosc boku kwadratu: ";
+		cin >> a;
+		pole(a);
+		break;
+	case 2:
+		cout << "Podaj dlugosci bokow a i b prostokata: ";
+		cin >> a >> b;
+		pole(a, b);
+		break;
+	case 3:
+		cout << "Podaj dlugosci trzech bokow trojkata: ";
+		cin >> a >> b >> c;
+		pole(a, b, c);
+		break;
+	case 4:
+		cout << "Podaj promien kola: ";
+		cin >> a;
+		pole(a, &pi);
+		break;
+	default:
+		cout << "Bledny numer figury.";
 	}
 }
 

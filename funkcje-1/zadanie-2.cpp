@@ -38,21 +38,12 @@ int dwumian_p(int n, int k) {
 	return value;
 }
 void licz_czas(int funkcja(int a, int b), int a, int b) {
-	// Get starting timepoint
 	auto start = high_resolution_clock::now();
-
 	cout << "wynik " << funkcja(a, b) << endl;
-
-	// Get ending timepoint
 	auto stop = high_resolution_clock::now();
-
-	// Get duration. Substart timepoints to 
-	// get duration. To cast it to proper unit
-	// use duration cast method
 	auto duration = duration_cast<microseconds>(stop - start);
-
 	cout << "Czas na wywolanie funkcji: "
-		<< duration.count() << " microseconds" << endl;
+		<< duration.count() << " ms" << endl;
 }
 int main()
 {
